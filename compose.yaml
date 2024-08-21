@@ -1,24 +1,24 @@
-name: example_workcell
+name: isotope_workcell
+
 include:
   - path: 'docker/wei.compose.yaml'
     project_directory: '.'
     env_file: '.env'
+
 services:
-  ###########
-  # Modules #
-  ###########
-  sleep_node:
-    image: ghcr.io/ad-sdl/sleep_module
-    container_name: sleep_node
-    command: python -m sleep_rest_node --port 2000
+  mir_node:
+    image: ghcr.io/ad-sdl/mir_module
+    container_name: mir_node
+    privileged : true
+    command: python -m mir_rest_node --port 2000
     ports:
       - 2000:2000
     env_file:
       - .env
-  camera_node:
-    image: ghcr.io/ad-sdl/camera_module
-    container_name: camera_node
-    privileged: true # needed for hardware access
+  ur_node:
+    image: ghcr.io/ad-sdl/ur_module
+    container_name: ur_node
+    privileged: true 
     ports:
       - 2001:2001
     command: python -m camera_rest_node --port 2001

@@ -1,0 +1,24 @@
+name: isotope_workcell
+
+config:
+  server_host: wei_server
+  server_port: 8000
+  redis_host: wei_redis
+  redis_port: 6379
+  reset_locations: false
+  update_interval: 1.0
+  use_diaspora: false
+  log_level: 20 
+
+modules:
+  - name: mir_base
+    model: Mir250
+    interface: wei_rest_node
+    config:
+      rest_node_address: "http://mir_node:2000"
+  - name: ur
+    model: ur
+    interface: wei_rest_node
+    config:
+      rest_node_address: "http://ur_node:2001"
+

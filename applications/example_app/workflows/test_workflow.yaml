@@ -1,0 +1,31 @@
+name: test_workflow
+metadata:
+  author: Aileen Cleary
+  info: Test workflow for mir base.
+  version: 0.1
+
+modules:
+  - name: mir_base
+
+flowdef:
+  - name: Move to Position
+    module: mir_base
+    action: move
+    args:
+      target_location: "test_pos"
+    comment: Move to position in front of charger.
+
+  - name: Dock to Charger
+    module: mir_base
+    action: dock
+    args:
+      target_location: "charger1"
+    comment: Dock to charger.
+
+  - name: Wait
+    module: mir_base
+    action: wait
+    args:
+      delay_seconds : 60
+    comment: Wait at charger for 60 seconds to allow images to be captured.
+      
