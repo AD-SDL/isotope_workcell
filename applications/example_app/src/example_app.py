@@ -31,13 +31,14 @@ def main() -> None:
     stored_data = []
     
     exp = ExperimentClient("localhost", "8000", "mir_test")
+    exp._register_experiment()
     wf_path = Path(__file__).parent.parent / "workflows" / "test_workflow.yaml"
 
-    for _ in range(10): 
-    #     run_info = exp.start_run(
-    #         wf_path.resolve(),
-    #     )
-    #     ## RUN CAMERAS
+    for _ in range(1): 
+        run_info = exp.start_run(
+            wf_path.resolve(),
+        )
+
         data, time_taken = run_camera(
             database="mir.db",
             camera="CALIB_Logi_RPL_20240508/",
@@ -45,10 +46,10 @@ def main() -> None:
             )
         stored_data.append(data)
         time_avg += time_taken
-    #     time.sleep(150)
+        time.sleep(150)
     
     print("Base timeline for un-optimized camera communication: ", time_avg/10)
-    # print(json.dumps(run_info, indent=2))
+    print(json.dumps(run_info, indent=2))
 
 if __name__ == "__main__":
     main()

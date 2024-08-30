@@ -16,9 +16,9 @@ modules:
     interface: wei_rest_node
     config:
       rest_node_address: "http://mir_node:2000"
-  - name: ur
-    model: ur
-    interface: wei_rest_node
-    config:
-      rest_node_address: "http://ur_node:2001"
+  # - name: ur
+  #   model: ur
+  #   interface: wei_rest_node
+  #   config:
+  #     rest_node_address: "http://ur_node:2001"
 

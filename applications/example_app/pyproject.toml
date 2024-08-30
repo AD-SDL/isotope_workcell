@@ -5,6 +5,7 @@ description = "A simple example WEI application that waits for a set amount of t
 authors = [{name = "Ryan D. Lewis", email="ryan.lewis@anl.gov"}]
 dependencies = [
     "ad_sdl.wei",
+    "requests"
 ]
 requires-python = ">=3.8.1"
 readme = "README.md"

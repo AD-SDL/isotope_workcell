@@ -7,7 +7,7 @@ include:
 
 services:
   mir_node:
-    image: ghcr.io/ad-sdl/mir_module
+    image: ghcr.io/ad-sdl/mir_module:dev
     container_name: mir_node
     privileged : true
     command: python -m mir_rest_node --port 2000
@@ -15,12 +15,12 @@ services:
       - 2000:2000
     env_file:
       - .env
-  ur_node:
-    image: ghcr.io/ad-sdl/ur_module
-    container_name: ur_node
-    privileged: true 
-    ports:
-      - 2001:2001
-    command: python -m camera_rest_node --port 2001
-    env_file:
-      - .env
+  # ur_node:
+  #   image: ghcr.io/ad-sdl/ur_module
+  #   container_name: ur_node
+  #   privileged: true 
+  #   ports:
+  #     - 2001:2001
+  #   command: python -m camera_rest_node --port 2001
+  #   env_file:
+  #     - .env

@@ -13,6 +13,8 @@ flowdef:
     action: move
     args:
       target_location: "test_pos"
+      description: ""
+      priority: 1
     comment: Move to position in front of charger.
 
   - name: Dock to Charger
@@ -24,7 +26,7 @@ flowdef:
 
   - name: Wait
     module: mir_base
-    action: wait
+    action: add_wait
     args:
       delay_seconds : 60
     comment: Wait at charger for 60 seconds to allow images to be captured.
