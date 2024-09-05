@@ -1,0 +1,73 @@
+name: ur_joint_disconnect_workflow
+metadata:
+  author: Aileen Cleary
+  info: Workflow for disconnecting sample joint using UR.
+  version: 0.1
+
+modules:
+  - name: ur
+
+flowdef:
+  - name: Move to home position.
+    module: ur
+    action: movej
+    args:
+      joints: payload.waypoint_1
+    comment: Move to home position.
+
+  - name: Open gripper.
+    module: ur
+    action: toggle_gripper
+    args:
+      open: True
+    comment: Opens gripper.
+
+  - name: Center above joint.
+    module: ur
+    action: movej
+    args:
+      joints: payload.waypoint_2
+    comment: Center above joint.
+
+  - name: Go to joint.
+    module: ur
+    action: movej
+    args:
+      joints: payload.waypoint_3
+    comment: Position gripper around joint shaft.
+
+  - name: Grab joint.
+    module: ur
+    action: toggle_gripper
+    args:
+      close: True
+    comment: Close gripper around joint.
+
+  - name: Disconnect joint.
+    module: ur
+    action: movej
+    args:
+      joints: payload.waypoint_4
+    comment: Pull joint shaft down to disconnect.
+
+  - name: Open gripper.
+    module: ur
+    action: toggle_gripper
+    args:
+      open: True
+    comment: Opens gripper.
+
+  - name: Center above joint.
+    module: ur
+    action: movej
+    args:
+      joints: payload.waypoint_2
+    comment: Center above joint.
+
+  - name: Move to home position.
+    module: ur
+    action: movej
+    args:
+      joints: payload.waypoint_1
+    comment: Move to home position.
+      

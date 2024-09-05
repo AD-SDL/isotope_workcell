@@ -1,8 +1,8 @@
-[project]
+[isotope_workcell]
 name = "example_app"
-version = "1.0.0"
-description = "A simple example WEI application that waits for a set amount of time, then takes a picture with a webcam."
-authors = [{name = "Ryan D. Lewis", email="ryan.lewis@anl.gov"}]
+version = "1.1.0"
+description = "A sample WEI application for the isotope workcell to test mir, UR, and camera communications."
+authors = [{name = "Aileen Cleary", email="acleary@anl.gov"}]
 dependencies = [
     "ad_sdl.wei",
     "requests"
@@ -12,4 +12,4 @@ readme = "README.md"
 license = {text = "MIT"}
 
 [project.urls]
-homepage = "https://github.com/AD-SDL/wei_template_workcell"
+homepage = "https://github.com/AD-SDL/isotope_workcell"

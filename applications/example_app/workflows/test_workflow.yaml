@@ -24,10 +24,8 @@ flowdef:
       target_location: "charger1"
     comment: Dock to charger.
 
-  - name: Wait
+  - name: Wait until Done.
     module: mir_base
-    action: add_wait
-    args:
-      delay_seconds : 60
-    comment: Wait at charger for 60 seconds to allow images to be captured.
+    action: wait_until_finished
+    comment: Waits for previous mission to be done executing before continuing.
       

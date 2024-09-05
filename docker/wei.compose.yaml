@@ -13,7 +13,7 @@ services:
     environment:
       - USER_ID=${USER_ID:-1000}
       - GROUP_ID=${GROUP_ID:-1000}
-    command: python3 -m wei.server --workcell /workcell_defs/${WORKCELL_FILENAME}
+    command: python3 -m wei.server --workcell /workcell_defs/${WORKCELL_FILENAME} --autostart_engine True
     depends_on:
       - wei_redis
 
