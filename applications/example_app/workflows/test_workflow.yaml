@@ -6,6 +6,7 @@ metadata:
 
 modules:
   - name: mir_base
+  - name: ur
 
 flowdef:
   - name: Move to Position
@@ -16,6 +17,25 @@ flowdef:
       description: ""
       priority: 1
     comment: Move to position in front of charger.
+
+  - name: Wait until Done.
+    module: mir_base
+    action: wait_until_finished
+    comment: Waits for previous mission to be done executing before continuing.
+
+  - name: Disconnect Joint
+    module: ur
+    action: gripper_disconnect_joint
+    args:
+      home: payload.waypoint_1
+      joint_location: payload.waypoint_2
+      joint_approach_axis: "x"
+      joint_approach_distance: 0.05
+      depth: 0.008
+      delay: 1.0
+      gripper_open: 0
+      gripper_close: 255
+    comment: Disconnect joint using current RPL joint configuration.
 
   - name: Dock to Charger
     module: mir_base
@@ -28,4 +48,3 @@ flowdef:
     module: mir_base
     action: wait_until_finished
     comment: Waits for previous mission to be done executing before continuing.
-      

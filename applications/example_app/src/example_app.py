@@ -20,25 +20,18 @@ def main() -> None:
     stored_data = []
     exp = ExperimentClient("localhost", "8000", "mir_test")
     exp._register_experiment()
-    mir_path = Path(__file__).parent.parent / "workflows" / "test_workflow.yaml"
-    ur_path = (
-        Path(__file__).parent.parent / "workflows" / "ur_joint_disconnect_workflow.yaml"
-    )
+    wf_path = Path(__file__).parent.parent / "workflows" / "test_workflow.yaml"
     payload = {
-        "waypoint_1": "[-4.88745, -1.42041, 2.08027, -0.63891, 1.4028, -0.02912]",
-        "waypoint_2": "[-5.40313, -1.48324, 2.38776, -0.88424, 1.89998, -0.00733]",
-        "waypoint_3": "[-5.3892, -1.01121, 2.48123, -1.45123, 1.91534, -0.01163]",
-        "waypoint_4": "[-5.38928, -0.97805, 2.47837, -1.48201, 1.91513, -0.01191]",
+        "waypoint_1": "[-5.45778870979418, -2.095121046105856, 2.1441996733294886, -0.05430622518573003, 1.8396282196044922, 0.010314404033124447]",
+        "waypoint_2": "[-0.13808589185898898, -0.3343258604018853, 0.0228316443656502, 1.3892169444793483, -0.7786089780873691, 0.7682852134633944]",
     }
 
     for _ in range(1):
-        exp.start_run(
-            mir_path.resolve(),
-        )
+        exp.start_run(wf_path.resolve(), payload=payload)
         data = run_camera(
             database="mir.db", camera="CALIB_Logi_RPL_20240508/", verbose=True
         )
-        exp.start_run(ur_path.resolve(), payload=payload)
+        # exp.start_run(ur_path.resolve(), payload=payload)
 
         stored_data.append(data)
         print(stored_data)

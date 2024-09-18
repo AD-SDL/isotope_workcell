@@ -16,9 +16,9 @@ services:
     env_file:
       - .env
   ur_node:
-    image: ghcr.io/ad-sdl/ur_module:latest
+    image: ghcr.io/ad-sdl/ur_module:aileen_dev
     container_name: ur_node
-    privileged: true 
+    privileged: true
     ports:
       - 2001:2001
     command: python -m ur_rest_node --port 2001 --ur_ip ${UR_IP}
